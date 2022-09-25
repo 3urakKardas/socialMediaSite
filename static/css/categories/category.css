@@ -1,0 +1,111 @@
+body{
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    background-color: rgb(100,150,50);
+
+}
+
+#selectedCategoryDiv{
+
+    display: none;
+
+}
+
+#categoryName{
+
+    background-color:red;
+
+    font-size: 2rem;
+
+}
+
+.threadStarter{
+
+    padding:5px;
+    margin:5px;
+
+    background-color: orange;
+
+}
+
+.entryImage{
+
+    width: 100px;
+
+}
+
+.visit{
+
+    text-align: right;
+
+}
+
+.likeDislike{
+
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+
+    text-align: right;
+}
+
+.threadStarter div bold i{
+
+    font-size: 1.2rem;
+
+}
+
+.like{
+
+    width: 5vw;
+
+    margin-left: 1vw;
+
+    border: none;
+
+    background-color:rgb(0,155,0);
+
+    border-radius: 1px 5px;
+}
+
+.like:hover{
+
+    background-color: rgb(0,255,0);
+
+}
+
+.dislike{
+
+    width: 5vw;
+
+    margin-left: 1vw;
+
+    border: none;
+
+    background-color:rgb(155,0,0);
+
+    border-radius: 1px 5px;
+}
+
+.dislike:hover{
+
+    background-color: rgb(255,0,0);
+
+}
+
+.user{
+
+    text-align: right;
+
+}
+
+.time{
+
+    margin-left: 1vw;
+    margin-right: 1vh;
+
+    font-size: 0.9rem;
+
+}

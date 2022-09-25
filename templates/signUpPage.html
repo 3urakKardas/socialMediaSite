@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>signUp</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/signUpPage.css') }}">
+</head>
+<body>
+    <div id="leftDiv">
+        possible catchy image here
+    </div>
+    <div id="rightDiv">
+        <form id="signUpForm" method="POST">
+            <input id="signUpUserName" type="text" placeholder="enter an username">
+            <input id="signUpPassword" type="text" placeholder="enter a password">
+            <input id="signUpSubmit" type="submit" value="singUpNow">
+        </form>
+    </div>
+
+    <div id="userNameNotAvailableMessage" class="">
+        user name is not possible
+    </div>
+
+    <div id="passwordTooSimpleMessage" class="">
+        user name is not possible
+    </div>
+
+    <script src="../static/js/signUpPage.js"></script>
+
+</body>
+</html>

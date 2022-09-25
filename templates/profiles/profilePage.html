@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/profiles/messages/profilePage.css') }}">
+
+    <title>profilePage</title>
+
+</head>
+<body>
+
+    <header>
+        {% include 'headerAndFooter/header.html' %}
+    </header>
+
+    <div id="emptySpace" style="height:25vh"></div>
+
+    <main>
+          <div id="description"> "{{ Db.session.query(account).filter_by(userName=url_for(request.endpoint, **request.view_args).split("/")[2]).first().userDescription }}" </div>
+
+          {% if currentAccount.userName == userNameGot %}
+
+              <form id="startThreadForm" method="POST">
+                  <div id="textArea"><input id="threadTitle" type="text" name="threadTitle" placeholder="Title">
+                      <div><textarea id="threadFirstEntry" name="threadFirstEntry" placeholder="Entry"></textarea></div>
+                  </div>
+                  <div id="buttonHolder">
+                      <input id="images" type="file" name="images" multiple>
+                  <label class="threadLabel" for="images">upload image</label>
+                  <select id="threadCategory" name="category">
+                  {% for i in listOfCategories %}
+                      <option value="{{ i }}">{{i}}</option>
+                  {% endfor %}
+                  </select>
+                      <input id="startThreadSubmit" type="submit" value="start the thread">
+                  <label class="threadLabel" for="startThreadSubmit">send</label>
+                  </div>
+              </form>
+
+        {% else %}
+
+        {% if threadId != -1 %}
+
+        {% for i in Db.session.query(messageThread).filter_by(id=threadId).first().messageIdList.split() %}
+
+        {% set theMessage = Db.session.query(message).filter_by(id=i | int).first() %}
+
+        {% if theMessage.id|string in Db.session.query(account).filter_by(userName=currentAccount.userName).first().messageList.split() %}
+
+        <div class="wrapper"><div  class="message mine"> {{ theMessage.messageContent }} </div></div>
+
+        {% elif theMessage.id|string in Db.session.query(account).filter_by(userName=userNameGot).first().messageList.split() %}
+
+        <div class="wrapper"><div class="message hisHer"> {{ theMessage.messageContent }} </div></div>
+
+        {% endif %}
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% if threadId == -1 and currentAccount != "-1"%}<h1><b>send a message for the first time </b></h1>{% endif %}
+        {% if currentAccount != "-1" %}
+
+            <div id="formWrapper">
+                <form id="createMessageThreadForm" method="POST">
+
+                <textarea id="createMessageThreadText"></textarea>
+
+                <input id="createMessageThreadSubmit" type="submit">
+
+                    <div id="messageLabelDiv"><label id="messageLabel" for="createMessageThreadSubmit">send</label></div>
+
+            </form>
+            </div>
+        {% endif %}
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="{{ url_for('static',filename='js/profiles/profilePage.js') }}"></script>
+
+</body>
+</html>

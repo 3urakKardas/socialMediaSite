@@ -1,0 +1,141 @@
+body{
+
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: blue;
+
+}
+
+#leftDiv{
+
+    width: 30%;
+    height: 65%;
+
+    margin: 15vh;
+
+    background-color: yellow;
+
+}
+
+#rightDiv{
+
+    width: 30%;
+    height: 65%;
+
+    margin: 15vh;
+
+
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#signUpForm{
+
+    width: 60%;
+    height: 75%;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: orange;
+
+    text-align:center;
+
+}
+
+#signUpForm input{
+
+    width: 80%;
+    height: 10%;
+
+    margin-top: 15%;
+
+    border-radius: 1vh;
+
+}
+
+#userNameNotAvailableMessage{
+
+   position: fixed;
+
+   width: 20vw;
+   height: 4vh;
+
+   left: 62.5vw;
+   top: 80vh;
+
+   background-color: green;
+
+   text-align: center;
+
+   opacity: 0;
+
+}
+
+#passwordTooSimpleMessage{
+
+   position: fixed;
+
+   width: 20vw;
+   height: 4vh;
+
+   left: 62.5vw;
+   top: 80vh;
+
+   background-color: green;
+
+   text-align: center;
+
+   opacity: 0;
+
+}
+
+.toPopUp{
+
+    //transition-duration: .3s;
+
+    animation: popUp 2s;
+
+    opacity: 0;
+
+}
+
+@keyframes popUp{
+
+    0%{
+         opacity: 0;
+         left: 62.5vw;
+         top: 80vh;
+         background-color: white;
+         color: black;
+    }
+
+    50%{
+         opacity: 1;
+         left: 62.5vw;
+         top: 67vh;
+         background-color: red;
+         color: white;
+    }
+
+    100%{
+         opacity:0;
+         left: 62.5vw;
+         top: 63vh;
+         background-color: white;
+         color: black;
+    }
+
+}

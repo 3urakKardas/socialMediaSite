@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>thread</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/categories/threads/thread.css') }}">
+</head>
+<body>
+
+    <header>
+
+        {% include 'headerAndFooter/header.html' %}
+
+    </header>
+
+    <div id="emptySpace" style="height:25vh"></div>
+
+    <div>
+        <b>
+            <span id="categoryName">
+                {{ selectedCategory }} /
+            </span>
+        </b>
+        <span id="threadTitle">
+            "{{ Db.session.query(Thread).filter_by(id=threadId).first().threadTitle }}"
+        </span>
+    </div>
+
+    {% for i in listOfEntries %}
+
+    <div class="entry">
+
+    <div>
+        here {{ i.entryContent }}
+    </div>
+
+
+    {% if os.path.isdir("media/entryImages/" + i.id|string) %}
+
+    {% for j in os.listdir("media/entryImages/" + i.id|string)%}
+
+    <a href="{{'/entryImages/' + i.id|string + '/' + j}}" ><img class="entryImage" src="{{ url_for('download_file', filename=('entryImages/'+i.id|string+'/' + j)) }}"></a>
+
+    {% endfor %}
+    {% endif %}
+
+        <div class="user">
+            <span class="time">
+                {{ i.createdDate.strftime("%d/%m/%Y") }}
+            </span>
+            <span class="time">
+                {{ i.createdDate.strftime("%H:%M") }}
+            </span>
+            <a href="/user/{{Db.session.query(Account).filter_by(id=i.belongingProfileId).first().userName}}">
+                <bold>
+                    @ {{ Db.session.query(Account).filter_by(id=i.belongingProfileId).first().userName }}
+                </bold>
+            </a>
+            <span class="profileImageDivv">
+        {% if os.path.isdir("media/profileImages/" + (i.belongingProfileId|string)) == True %}
+
+        <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/'+(i.belongingProfileId|string)+'/profileImage.jpg') }}">
+
+        {% else %}
+
+        <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/0/noProfileImage.jpg') }}">
+
+        {% endif %}
+        </span>
+        </div>
+
+        <div class="likeDislike"><button class="like">
+            <span id="like_{{i.id|string}}">
+                like
+            </span>
+            <span id="likes_{{i.id|string}}" class="gg">
+                {{ i.listOfLikedUsersId.split()|length }}
+            </span></button><button class="dislike">
+            <span id="dislike_{{i.id|string}}">
+                dislike
+            </span>
+            <span id="dislikes_{{i.id|string}}">
+                {{ i.listOdDislikedUsersId.split()|length }}
+            </span>
+        </button>
+        </div>
+
+    </div>
+
+
+    {% endfor %}
+
+    {% if currentAccount != "-1" %}
+
+    <div id="formWrapper">
+    <form id="theForm">
+        <textarea id="entryContent" name="entryContent"></textarea>
+        <input id="images" type="file" name="images">
+        <input id="submitEntry" type="submit">
+
+    </form>
+    </div>
+
+    {% endif %}
+
+    <script src="{{ url_for('static',filename='js/categories/threads/thread.js') }}"></script>
+
+</body>
+</html>

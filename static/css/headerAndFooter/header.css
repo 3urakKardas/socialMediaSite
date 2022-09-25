@@ -1,0 +1,232 @@
+#wrapper{
+    position:fixed;
+
+    width: 100vw;
+
+}
+
+#headerHtml{
+
+    width: 100%;
+    height: 20vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#logoDiv{
+
+    flex: 1;
+    height:20vh;
+
+    background-color: green;
+}
+
+#searchBarDiv{
+
+    flex: 3;
+
+    height:20vh;
+
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#searchBar{
+
+    width: 30vw;
+    height: 5vh;
+
+    border-radius: 1vw;
+
+}
+
+#accountManagementDiv{
+
+    flex: 1;
+
+    height: 20vh;
+
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signInForm{
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+#signInSubmit{
+
+    margin: 1vh;
+
+}
+
+#userDataWrapper{
+
+    flex: 2;
+
+    text-align: center;
+
+}
+
+#userImageWrapper{
+
+    flex: 1;
+
+}
+
+#categoriesDiv{
+
+    position:fixed;
+
+    width: 100%;
+    height: 5vh;
+
+    //font-size: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: orange;
+
+}
+
+.categoryWrapper{
+
+    box-sizing: border-box;
+
+    padding-top: 0.7vh;
+
+    flex: 1;
+
+    height: 100%;
+
+    background-color: blue;
+
+    text-align: center;
+    transition-duration: 0.4s;
+
+
+}
+
+.categoryLink{
+
+    font-size: 1.2rem;
+
+    text-decoration: none;
+
+    color: black;
+
+}
+
+.category{
+
+
+}
+
+.categoryWrapper:hover{
+
+    //animation: bottomBorder;
+
+    //background-color: yellow;
+
+    border-bottom: 1vh solid orange;
+
+}
+
+@keyframes bottomBorder{
+
+    0%{
+
+    }
+    100%{
+
+    background-color: yellow;
+
+    }
+
+}
+
+.profileImage{
+
+    width: 6vw;
+
+    padding-right: auto;
+
+    border-radius: 50%;
+
+
+
+}
+
+#foundTerms{
+    position:fixed;
+
+    right: 34vw;
+    top: 12vh;
+
+    list-style:none;
+
+    width: 30%;
+
+    z-index: 1;
+
+}
+
+.foundTermLink{
+
+    text-decoration: none;
+
+}
+
+.foundTerm{
+
+    display:none;
+    width:100%;
+    height:30px;
+
+    background-color: white;
+
+    padding-left: 1vh;
+    padding-top: 1vh;
+
+    border: 1px solid black;
+
+    color: black;
+
+}
+
+.foundTerm:hover{
+
+    background-color: rgb(0,250,0);
+    border: 1px solid green;
+
+}
+
+.foundTermDisplayed{
+    width:100%;
+    height:30px;
+
+    background-color:red;
+
+}
+
+.subWrapper{
+
+    margin-top: 1vh;
+
+}

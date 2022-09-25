@@ -1,0 +1,88 @@
+body{
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    background-color: rgb(150,10,150);
+
+}
+
+#changeProfileImageWrapper{
+
+    //width: 100%;
+    height: 25vh;
+
+    background-color: orange;
+
+    margin: 2vh;
+    padding: 2vh;
+
+
+}
+
+#newProfileImage{
+
+    display: none;
+
+}
+
+.label{
+
+    background-color: white;
+
+    border: 1px solid black;
+
+}
+
+.label:hover{
+
+    background-color: rgb(240,240,240);
+
+    border: 2px solid black;
+
+    cursor: pointer;
+
+}
+
+#changeProfileDescriptionWrapper{
+
+    //width: 100%;
+    height: 25vh;
+
+    background-color: orange;
+
+    margin: 2vh;
+    padding: 2vh;
+
+
+}
+
+#userDescription{
+
+    width: 100%;
+    height: 10vh;
+
+    resize: none;
+
+    maxlength: 200;
+
+}
+
+.upSpace{
+
+    margin-top: 2vh;
+
+}
+
+#submitUserDescriptionButton{
+
+    display: none;
+
+}
+
+#submitButton{
+
+    display: none;
+
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>image</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/image.css') }}">
+
+</head>
+<body>
+
+    <div id="imageWrapper">
+
+        <img class="image" src="{{ url_for('download_file', filename=(mediaFolder + '/'+ idFolder +'/' + fileName)) }}">
+
+    </div>
+
+</body>
+</html>

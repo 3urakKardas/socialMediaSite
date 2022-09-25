@@ -1,0 +1,157 @@
+body{
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    background-color: rgb(150,10,150);
+
+}
+
+.wrapper{
+
+    text-align: right;
+
+    padding-right: 2vw;
+    padding-left: 2vw;
+
+}
+
+.message{
+
+    width: 30vw;
+
+    border-radius: 1vh;
+
+    padding:5px;
+    margin:5px;
+
+    text-align: left;
+
+    overflow-wrap: break-word;
+
+}
+
+.mine{
+
+    background-color: rgb(100,200,100);
+
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.hisHer{
+
+    background-color: orange;
+
+}
+
+#formWrapper{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#description{
+
+    height: 5vh;
+
+    margin: 2vh;
+
+    background-color: orange;
+
+}
+
+#createMessageThreadText{
+
+    resize: none;
+
+}
+
+#createMessageThreadSubmit{
+
+    display: none;
+
+}
+
+#messageLabel{
+
+    margin-left: 10vh;
+
+    background-color: white;
+
+}
+
+#messageLabel:hover{
+
+    border: 2px solid black;
+
+    cursor: pointer;
+
+}
+
+#messageLabelDiv{
+
+
+
+}
+
+#images{
+
+    display: none;
+
+}
+
+.threadLabel{
+
+    border:1px solid white;
+
+    background-color: white;
+
+}
+
+#startThreadSubmit{
+
+    display: none;
+
+}
+
+.threadLabel:hover{
+
+    border:1px solid black;
+
+    cursor: pointer;
+
+}
+
+#threadTitle{
+
+    width: 40vw;
+
+    height: 3vh;
+
+    margin-left: 5vw;
+
+}
+
+#threadFirstEntry{
+
+    width: 80vw;
+
+    height: 10vh;
+
+    margin-left: 5vw;
+    margin-top: 5vh;
+
+    resize: none;
+
+}
+
+#buttonHolder{
+
+    margin-left: 5vw;
+    margin-top: 5vh;
+
+}

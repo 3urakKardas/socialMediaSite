@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/profiles/messages/settings.css') }}">
+    <title>settings</title>
+</head>
+<body>
+
+<header>
+        {% include 'headerAndFooter/header.html' %}
+    </header>
+
+<div id="emptySpace" style="height:25vh"></div>
+<main>
+
+    <div id="changeProfileImageWrapper">
+        <div> Change profile image:</div></br>
+            <form id="changeProfileImage" method="POST">
+
+                <input id="newProfileImage" type="file" name="image">
+
+                <label class="label" for="newProfileImage"> select new profile image </label>
+
+                <div  class="upSpace"><input id="submitButton" type="submit"></div>
+
+                <label class="label" for="submitButton"> send new profile image </label>
+
+            </form>
+    </div>
+    <div id="changeProfileDescriptionWrapper">
+
+        <div> Change description:</div></br>
+
+           <form id="changeProfileDescription" method="POST">
+
+                <textarea id="userDescription"></textarea>
+
+               <input id="submitUserDescriptionButton" type="submit">
+               <div class="upSpace"><label class="label" for="submitUserDescriptionButton"> send new description </label></div>
+
+            </form>
+    </div>
+
+    </main>
+
+    <script src="{{ url_for('static',filename='js/profiles/settings.js') }}"></script>
+
+</body>
+</html>

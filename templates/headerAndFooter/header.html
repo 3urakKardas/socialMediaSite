@@ -1,0 +1,80 @@
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/headerAndFooter/header.css') }}">
+
+</head>
+<div id="wrapper">
+<div id="headerHtml">
+    <div id="logoDiv"> <a href="/"> logo image and main page </a> </div>
+    <div id="searchBarDiv">
+        <input id="searchBar" type="text" onkeyup="searchFunction()" placeHolder="enter something">
+        <div><ul id="foundTerms">
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+            <a class="foundTermLink"><li class="foundTerm"> fhfhfhf</li></a>
+        </ul></div>
+    </div>
+    <div id="accountManagementDiv">
+
+        {% if currentAccount == '-1' %}
+        <form id="signInForm" method="POST">
+            <input id="signInText" type="text">
+            <input id="signInPassword" type="text">
+            <input id="signInSubmit" type="submit" value="signInNow">
+
+        </form>
+        <a href="/signUp"><button id="signUpButton">signUp</button></a>
+
+        {% else %}
+
+        <div id="userDataWrapper">
+
+            <div>@ {{ currentAccount.userName }}</div>
+
+            {% if url_for(request.endpoint, **request.view_args).split("/")[1] == "user" and url_for(request.endpoint, **request.view_args).split("/")[2] == currentAccount.userName and url_for(request.endpoint, **request.view_args).split("/")[3] != "settings" %}
+
+            <div class="subWrapper"><a href="/user/{{url_for(request.endpoint, **request.view_args).split('/')[2]}}/settings">settings</a></div>
+
+
+            {% elif url_for(request.endpoint, **request.view_args).split("/")[1] != "user" or url_for(request.endpoint, **request.view_args).split("/")[3] != currentAccount.userName %}
+
+            <div class="subWrapper"><a href="/user/{{currentAccount.userName}}">profile page</a></div>
+
+            {% endif %}
+
+        </div>
+
+        <div id="userImageWrapper">
+
+        {% if os.path.isdir("media/profileImages/" + (currentAccount.id|string)) == True %}
+
+
+        <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/'+(currentAccount.id|string)+'/profileImage.jpg') }}">
+
+        {% else %}
+
+        <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/0/noProfileImage.jpg') }}">
+
+
+        {% endif %}
+        </div>
+
+        {% endif %}
+    </div>
+</div>
+<div id="categoriesDiv">
+
+    {% for i in listOfCategories %}
+
+    <div class="categoryWrapper"><a class="categoryLink" href='/{{i}}'> <div class='category'> {{ i }} </div> </a></div>
+
+    {% endfor %}
+
+</div>
+</div>
+
+<script src="{{ url_for('static',filename='js/headerAndFooter/header.js') }}"></script>

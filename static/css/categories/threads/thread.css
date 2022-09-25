@@ -1,0 +1,124 @@
+body{
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    background-color: rgb(100,150,50);
+
+}
+
+#categoryName{
+
+    font-size:2rem;
+
+}
+
+#threadTitle{
+
+font-size: 1.2rem;
+
+}
+
+.entry{
+
+    padding:5px;
+    margin:5px;
+
+    background-color: orange;
+
+}
+
+.user{
+
+    padding-top: 1vh;
+
+    text-align: right;
+
+}
+
+.user a{
+
+    text-decoration: none;
+
+}
+
+.entryImage{
+
+width: 100px;
+
+}
+
+.likeDislike{
+
+    text-align: right;
+
+    margin-top: 1vh;
+
+}
+
+.like{
+
+    width: 5vw;
+
+    margin-left: 1vw;
+
+    border: none;
+
+    background-color:rgb(0,155,0);
+
+    border-radius: 1px 5px;
+}
+
+.like:hover{
+
+    background-color: rgb(0,255,0);
+
+}
+
+.dislike{
+
+    width: 5vw;
+
+    margin-left: 1vw;
+
+    border: none;
+
+    background-color:rgb(155,0,0);
+
+    border-radius: 1px 5px;
+}
+
+.dislike:hover{
+
+    background-color: rgb(255,0,0);
+
+}
+
+#formWrapper{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#theForm{
+
+    //display: flex;
+    justify-content: center;
+
+}
+
+.time{
+
+    padding-right: 1vh;
+
+    font-size: 0.9rem;
+
+}
+
+#entryContent{
+
+    resize: none;
+
+}

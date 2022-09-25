@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/categories/category.css') }}">
+</head>
+<body>
+
+    <header>
+        {% include 'headerAndFooter/header.html' %}
+    </header>
+
+    <div id="emptySpace" style="height:25vh"></div>
+
+    <div id="selectedCategoryDiv" data-geocode='{{ selectedCategory }}'></div>
+
+    <div id="categoryName"> {{ selectedCategory }} </div>
+
+    {% set arr = currentCategory.listOfThreadId.split() %}
+
+    {% for i in listOfThreads %}
+
+    <div class="threadStarter">
+        <div>
+            <bold>
+                <i> "{{i.threadTitle}}" </i>
+            </bold>
+        </div>
+        <div>
+            {{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().entryContent}}
+        </div>
+
+        {% if os.path.isdir("media/entryImages/" + (Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string)) %}
+
+        {% for j in os.listdir("media/entryImages/" + (Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string)) %}<!--Db.session.query(Entry).filter_by(id=Db.session.query(Thread).filter_by(id=i.id).first().listOfEntryId.split()[0])).first().id-->
+
+        <a href="{{'/entryImages/' + Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string + '/' + j}}" >
+            <img class="entryImage" src="{{ url_for('download_file', filename=('entryImages/'+Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string+'/' + j)) }}">
+        </a>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <div class="user">
+            <span class="time">
+                {{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().createdDate.strftime("%d/%m/%Y")}}
+            </span>
+            <span class="time">
+                {{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().createdDate.strftime("%H:%M")}}
+            </span>
+            <a href="/user/{{Db.session.query(Account).filter_by(id=Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().belongingProfileId|int).first().userName}}">
+                @{{Db.session.query(Account).filter_by(id=Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().belongingProfileId|int).first().userName}}
+            </a>
+            <span class="profileImageDivv">
+            {% if os.path.isdir("media/profileImages/" + (Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().belongingProfileId|string)) == True %}
+
+            <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/'+(Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().belongingProfileId|string)+'/profileImage.jpg') }}">
+
+            {% else %}
+
+            <img class="profileImage" src="{{ url_for('download_file', filename='profileImages/0/noProfileImage.jpg') }}">
+
+            {% endif %}
+            </span>
+        </div>
+
+        <div class="likeDislike"><button class="like"><span id="like_{{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string}}">like</span><span id="likes_{{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string}}" class="gg"> {{ Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().listOfLikedUsersId.split()|length }} </span></button><button class="dislike"><span id="dislike_{{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string}}">dislike</span><span id="dislikes_{{Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().id|string}}"> {{ Db.session.query(Entry).filter_by(id=(i.listOfEntryId.split()[0]|int)).first().listOdDislikedUsersId.split()|length }} </span></button></div>
+
+        <div class="visit"><a href="{{ currentCategory.categoryName + '/' + (i.id|string)}}" > visit thread </a></div>
+
+    </div>
+
+    {% endfor %}
+
+    {% if currentAccount != "-1" %}
+
+     <form id="startThreadForm" method="POST">
+         <input id="threadTitle" type="text" name="threadTitle">
+         <input id="threadFirstEntry" type="text" name="threadFirstEntry">
+         <input id="images" type="file" name="images" multiple>
+         <input id="startThreadSubmit" type="submit" value="start the thread">
+     </form>
+
+    {% endif %}
+
+    <script src="{{ url_for('static',filename='js/categories/category.js') }}"></script>
+
+</body>
+</html>
